@@ -17,11 +17,6 @@ function removeToken(id) {
 
 // ---- Vtipné hlášky ---------------------------------------------------------
 const QUOTES = [
-  '„Bears. Beets. Battlestar Galactica." – Jim (ako Dwight)',
-  '„Láska. To je to, čo drží pobočku pokope." – tak nejak Michael',
-  '„I am running away from my responsibilities. And it feels good." – Michael Scott',
-  '„That\'s what she said." – niekto, vždy',
-  '„Manželstvo je ako Pretzel Day. Vzácne a dokonalé." – Stanley (pravdepodobne)',
   '„Would I rather be feared or loved? Easy. Both." – Michael Scott'
 ];
 
