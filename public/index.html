@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Svadobná kartička</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Special+Elite&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="confetti"></canvas>
+
+  <header class="hero">
+    <div class="memo-tag">MEMO · DUNDER MIFFLIN, Scranton</div>
+    <h1 id="title">Svadobná kartička</h1>
+    <p class="subtitle" id="subtitle">Podpíš sa, nechaj odkaz a maj sa ako Michael na Pretzel Day.</p>
+    <p class="date" id="date"></p>
+    <blockquote class="quote" id="quote"></blockquote>
+  </header>
+
+  <main>
+    <!-- Formulár -->
+    <section class="card form-card">
+      <h2>✍️ Nechaj odkaz</h2>
+      <form id="messageForm">
+        <label>
+          Tvoje meno <span class="hint">(nepovinné — pokojne buď „Anonymný kolega")</span>
+          <input type="text" id="name" maxlength="80" placeholder="napr. Dwight K. Schrute, Assistant to the Regional Manager" />
+        </label>
+
+        <label>
+          Odkaz pre novomanželov
+          <textarea id="text" maxlength="2000" rows="4" required placeholder="Prajem vám menej drámy ako v pobočke Stamford a viac lásky ako Jim a Pam..."></textarea>
+        </label>
+
+        <div class="secret-toggle">
+          <label class="switch">
+            <input type="checkbox" id="secret" />
+            <span class="slider"></span>
+          </label>
+          <div>
+            <strong>🔒 Tajný odkaz</strong>
+            <p class="hint">Uvidí ho <em>iba ženích</em> po zadaní hesla. That's what she said.</p>
+          </div>
+        </div>
+
+        <button type="submit" class="btn primary" id="submitBtn">Poslať odkaz 💌</button>
+        <p class="form-msg" id="formMsg"></p>
+      </form>
+    </section>
+
+    <!-- Tajný trezor -->
+    <section class="card vault-card" id="vaultCard">
+      <div class="vault-locked" id="vaultLocked">
+        <h2>🕵️ Tajný trezor</h2>
+        <p class="hint">Tu sú schované tajné odkazy. Odomkne ich len ženích heslom.
+          <br />(<span id="secretCount">0</span> tajných odkazov čaká)</p>
+        <div class="unlock-row">
+          <input type="password" id="unlockPassword" placeholder="Heslo do trezoru" />
+          <button class="btn" id="unlockBtn">Odomknúť</button>
+        </div>
+        <p class="form-msg" id="unlockMsg"></p>
+      </div>
+      <div class="vault-open hidden" id="vaultOpen">
+        <h2>🔓 Trezor odomknutý</h2>
+        <p class="hint">Vitaj, ženích. Tajné odkazy sú teraz viditeľné nižšie (majú fialový rámik). Fun fact: Dwight by bol pyšný.</p>
+        <button class="btn small" id="lockBtn">Zamknúť späť</button>
+      </div>
+    </section>
+
+    <!-- Odkazy -->
+    <section class="messages-section">
+      <h2>💬 Odkazy od kolegov <span class="count" id="count"></span></h2>
+      <div id="messages" class="messages-grid"></div>
+      <p id="empty" class="empty hidden">Zatiaľ ticho ako v konferenčke počas Michaelovej prezentácie. Buď prvý! 🎤</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Vyrobené s láskou (a papierom od Dunder Mifflin) 📄❤️</p>
+  </footer>
+
+  <!-- Editovacie okno -->
+  <div class="modal hidden" id="editModal">
+    <div class="modal-box">
+      <h3>Uprav svoj odkaz</h3>
+      <label>Meno<input type="text" id="editName" maxlength="80" /></label>
+      <label>Odkaz<textarea id="editText" rows="4" maxlength="2000"></textarea></label>
+      <label class="inline-check"><input type="checkbox" id="editSecret" /> Tajný odkaz</label>
+      <div class="modal-actions">
+        <button class="btn danger" id="deleteBtn">Zmazať</button>
+        <div>
+          <button class="btn ghost" id="cancelEdit">Zrušiť</button>
+          <button class="btn primary" id="saveEdit">Uložiť</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

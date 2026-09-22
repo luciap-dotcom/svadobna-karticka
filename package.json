@@ -1,0 +1,15 @@
+{
+  "name": "virtual-wedding-card",
+  "version": "1.0.0",
+  "description": "Virtuálna svadobná kartička v štýle The Office - kolegovia nechávajú verejné aj tajné odkazy",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
