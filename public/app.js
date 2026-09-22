@@ -40,9 +40,6 @@ async function loadInfo() {
       document.getElementById('title').textContent = info.pageTitle;
       document.title = info.pageTitle;
     }
-    const names = [info.groomName, info.brideName].filter(Boolean).join(' & ');
-    if (names) document.getElementById('subtitle').textContent =
-      `Pre ${names} — podpíš sa a nechaj odkaz. Maj sa ako Michael na Pretzel Day.`;
     if (info.weddingDate) {
       const d = new Date(info.weddingDate + 'T00:00:00');
       if (!isNaN(d)) document.getElementById('date').textContent =
