@@ -167,10 +167,11 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); border-color: va
 /* ---- Odkazy ---- */
 .messages-section h2 { text-align: center; }
 .count { color: var(--muted); font-weight: 400; font-size: 16px; }
+/* Stĺpcové (masonry) rozloženie: každá kartička je vysoká podľa svojho textu,
+   krátke odkazy sa poskladajú pod seba a priestor sa využije efektívne. */
 .messages-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 18px;
+  column-width: 260px;
+  column-gap: 18px;
   margin-top: 18px;
 }
 .msg {
@@ -182,6 +183,10 @@ input:focus, textarea:focus { outline: 2px solid var(--accent); border-color: va
   position: relative;
   transform: rotate(var(--tilt, 0deg));
   transition: transform .15s;
+  /* aby sa kartička nerozdelila medzi dva stĺpce a mala medzeru pod sebou */
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  margin: 0 0 18px;
 }
 .msg:hover { transform: rotate(0deg) translateY(-3px); }
 .msg.secret { border: 2px solid var(--secret); background: var(--secret-soft); }
