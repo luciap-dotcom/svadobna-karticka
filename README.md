@@ -57,6 +57,25 @@ Najjednoduchšie cez **[Render.com](https://render.com)** (má zadarmo úroveň)
    - `SECRET_PASSWORD` = tvoje tajné heslo (aby nebolo priamo v kóde na GitHube).
 5. Deploy → dostaneš verejný link typu `https://tvoja-karticka.onrender.com` — ten pošli kolegom. 🎉
 
+### Aby odkazy nemizli (bezplatná databáza v tom istom Render účte)
+
+Free web služba má dočasný disk — pri reštarte/uspatí by sa odkazy stratili.
+Preto ich ukladáme do **bezplatnej Render Postgres databázy** (žiadny nový účet):
+
+1. V Renderi: **New → Postgres** → zvoľ **Free** plán → vytvor.
+2. Otvor databázu a skopíruj **Internal Database URL**.
+3. Vráť sa do svojej web služby → **Environment** → pridaj premennú:
+   - `DATABASE_URL` = (vložená Internal Database URL z kroku 2)
+4. Ulož → služba sa nasadí nanovo a odkazy sa odteraz ukladajú do databázy. ✅
+
+> ✅ Odkazy prežijú reštart aj uspatie. Ak `DATABASE_URL` nie je nastavená
+> (napr. lokálne u teba), appka použije súbor `data/messages.json` ako predtým.
+>
+> ⏳ Free web služba sa po ~15 min nečinnosti uspí → prvý návštevník počká ~30–50 s.
+> Odkazy sa nestratia, sú bezpečne v databáze.
+>
+> 🗓️ Render **free databáza sa po ~30 dňoch zmaže** — na jednorazovú svadbu stačí.
+
 > ⚠️ Firemné pravidlá: over si, či smieš nasadiť appku na verejný cloud.
 > Alternatívne to vieš spustiť aj na firemnom serveri — kód sa nemení.
 
